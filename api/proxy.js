@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx8FqLS6NEdY09BB3E7Fpy24dqNZCF2vauFNkqi8qAAT98xjeHc_sFBqDRM5iA9qQRVCQ/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCLZtq4sd2wm2Y08Dltt70KCw2RiB4TmgUrPKIOdj6I93DfN346LiMCOaKJoUsjsCX/exec';
 
     if (req.method === 'POST') {
       // Parsear el body si es string
