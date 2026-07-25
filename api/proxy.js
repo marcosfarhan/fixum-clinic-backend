@@ -13,17 +13,28 @@ export default async function handler(req, res) {
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx8FqLS6NEdY09BB3E7Fpy24dqNZCF2vauFNkqi8qAAT98xjeHc_sFBqDRM5iA9qQRVCQ/exec';
 
     if (req.method === 'POST') {
+      // Parsear el body si es string
+      let datosAEnviar = req.body;
+      if (typeof req.body === 'string') {
+        datosAEnviar = JSON.parse(req.body);
+      }
+
       const response = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
-        body: JSON.stringify(req.body),
+        body: JSON.stringify(datosAEnviar),
         headers: {
           'Content-Type': 'application/json'
         }
       });
 
-      const datos = await response.json();
-
-      res.status(200).json(datos);
+      const datos = await response.text();
+      
+      try {
+        const jsonData = JSON.parse(datos);
+        res.status(200).json(jsonData);
+      } catch (e) {
+        res.status(200).json({ ok: true, raw: datos });
+      }
     } else {
       res.status(405).json({ error: 'Method not allowed' });
     }
