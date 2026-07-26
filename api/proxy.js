@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   }
 
   try {
-   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzb8jeo5XFRGz5sVSLylcF-ZFxYHMkLcA9n3bM8ARxug9hsY0fgVBdljeyy-BMjguYp/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzb8jeo5XFRGz5sVSLylcF-ZFxYHMkLcA9n3bM8ARxug9hsY0fgVBdljeyy-BMjguYp/exec';
 
     if (req.method === 'POST') {
       const bodyString = typeof req.body === 'string' ? req.body : JSON.stringify(req.body);
